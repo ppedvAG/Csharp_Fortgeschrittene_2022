@@ -58,11 +58,24 @@ namespace BooksManager
             var dlg = new SaveFileDialog() { Filter = "XML-Datei|*.xml|Alles Dateien|*.*" };
             if (dlg.ShowDialog().Value)
             {
-                List<Volumeinfo> data = ((IEnumerable<Volumeinfo>)myGrid.ItemsSource).ToList();
-                var serial = new XmlSerializer(typeof(List<Volumeinfo>));
-                using var sw = new StreamWriter(dlg.FileName);
-                serial.Serialize(sw, data);
+                //List<Volumeinfo> data = ((IEnumerable<Volumeinfo>)myGrid.ItemsSource).ToList();
+                //var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                //using var sw = new StreamWriter(dlg.FileName);
+                //serial.Serialize(sw, data);
+                var sm = new StorageManager();
+                sm.SaveAsXML<Volumeinfo>(((IEnumerable<Volumeinfo>)myGrid.ItemsSource).ToList(), dlg.FileName);
+
             }
+        }
+
+        private void SaveStuff(object sender, RoutedEventArgs e)
+        {
+            var stuff = new List<string>();
+            stuff.Add("Hund");
+            stuff.Add("Katze");
+            stuff.Add("Bier");
+            var sm = new StorageManager();
+            sm.SaveAsXML(stuff, "stuff.xml");
         }
 
         private void LoadXML(object sender, RoutedEventArgs e)
@@ -70,10 +83,19 @@ namespace BooksManager
             var dlg = new OpenFileDialog() { Filter = "XML-Datei|*.xml|Alles Dateien|*.*" };
             if (dlg.ShowDialog().Value)
             {
-                using var sr = new StreamReader(dlg.FileName);
-                var serial = new XmlSerializer(typeof(List<Volumeinfo>));
-                myGrid.ItemsSource = (List<Volumeinfo>)serial.Deserialize(sr);
+                //using var sr = new StreamReader(dlg.FileName);
+                //var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                //myGrid.ItemsSource = (List<Volumeinfo>)serial.Deserialize(sr);
+                var sm = new StorageManager();
+                myGrid.ItemsSource = sm.LoadFromXML<Volumeinfo>(dlg.FileName);
             }
+        }
+
+        private void LoadStuff(object sender, RoutedEventArgs e)
+        {
+            var sm = new StorageManager();
+            var stuff = sm.LoadFromXML<string>("stuff.xml");
+            MessageBox.Show(string.Join(", ", stuff));
         }
     }
 }
