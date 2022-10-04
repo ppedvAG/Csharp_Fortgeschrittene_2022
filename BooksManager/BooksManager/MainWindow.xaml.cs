@@ -1,10 +1,12 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace BooksManager
 {
@@ -48,6 +50,29 @@ namespace BooksManager
             {
                 var json = File.ReadAllText(dlg.FileName);
                 myGrid.ItemsSource = JsonSerializer.Deserialize<List<Volumeinfo>>(json);
+            }
+        }
+
+        private void SaveXML(object sender, RoutedEventArgs e)
+        {
+            var dlg = new SaveFileDialog() { Filter = "XML-Datei|*.xml|Alles Dateien|*.*" };
+            if (dlg.ShowDialog().Value)
+            {
+                List<Volumeinfo> data = ((IEnumerable<Volumeinfo>)myGrid.ItemsSource).ToList();
+                var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                using var sw = new StreamWriter(dlg.FileName);
+                serial.Serialize(sw, data);
+            }
+        }
+
+        private void LoadXML(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog() { Filter = "XML-Datei|*.xml|Alles Dateien|*.*" };
+            if (dlg.ShowDialog().Value)
+            {
+                using var sr = new StreamReader(dlg.FileName);
+                var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                myGrid.ItemsSource = (List<Volumeinfo>)serial.Deserialize(sr);
             }
         }
     }

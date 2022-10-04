@@ -13,6 +13,8 @@
             <Button Click="Such">Suchen</Button>
             <Button Click="SaveJson">Save as JSON...</Button>
             <Button Click="LoadJson">Load from JSON...</Button>
+            <Button Click="SaveXML">Save as XML...</Button>
+            <Button Click="LoadXML">Load from XML...</Button>
         </WrapPanel>
         <DataGrid Name="myGrid"/>
     </DockPanel>
