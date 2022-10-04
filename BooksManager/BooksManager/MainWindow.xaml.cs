@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Windows;
@@ -24,7 +27,28 @@ namespace BooksManager
 
             BooksResult result = JsonSerializer.Deserialize<BooksResult>(json);
 
-            myGrid.ItemsSource = result.items.Select(x=>x.volumeInfo);
+            myGrid.ItemsSource = result.items.Select(x => x.volumeInfo);
+        }
+
+        private void SaveJson(object sender, RoutedEventArgs e)
+        {
+            var dlg = new SaveFileDialog() { Filter = "JSON-Datei|*.json|Alles Dateien|*.*" };
+            if (dlg.ShowDialog().Value)
+            {
+                IEnumerable<Volumeinfo> data = (IEnumerable<Volumeinfo>)myGrid.ItemsSource;
+                var json = JsonSerializer.Serialize(data);
+                File.WriteAllText(dlg.FileName, json);
+            }
+        }
+
+        private void LoadJson(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog() { Filter = "JSON-Datei|*.json|Alles Dateien|*.*" };
+            if (dlg.ShowDialog().Value)
+            {
+                var json = File.ReadAllText(dlg.FileName);
+                myGrid.ItemsSource = JsonSerializer.Deserialize<List<Volumeinfo>>(json);
+            }
         }
     }
 }
