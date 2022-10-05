@@ -11,7 +11,11 @@
         <Button Click="StartTask">Start Task</Button>
         <Button Click="StartTaskmitTS">Start Task mit TS</Button>
         <Button Click="LoadFromDB">Lade von DB</Button>
+        <Button Click="LoadFromDBAsyncAwait">Lade von DB (async/await)</Button>
+        <Button Click="StartAsyncAwait">Async/Await (Zähler)</Button>
+        <Button Click="StartAltUndLangsam">Meine alte, langsame Funktion</Button>
         
         <ProgressBar Height="22" Name="pb1"/>
+        <Button Click="Abort" >Abbrechen</Button>
     </StackPanel>
 </Window>
