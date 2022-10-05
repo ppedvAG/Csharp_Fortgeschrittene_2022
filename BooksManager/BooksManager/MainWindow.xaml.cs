@@ -95,7 +95,7 @@ namespace BooksManager
         {
             var sm = new StorageManager();
             var stuff = sm.LoadFromXML<string>("stuff.xml");
-            MessageBox.Show(string.Join(", ", stuff));
+            MessageBox.Show(string.Join(" ..... ", stuff));
         }
     }
 }

@@ -7,9 +7,9 @@ namespace BooksManager
 {
     internal class StorageManager
     {
-        public void SaveAsXML<T>(IEnumerable<T> data, string fileName)
+        public void SaveAsXML<Dings>(IEnumerable<Dings> data, string fileName)
         {
-            var serial = new XmlSerializer(typeof(List<T>));
+            var serial = new XmlSerializer(typeof(List<Dings>));
             using var sw = new StreamWriter(fileName);
             serial.Serialize(sw, data);
         }
