@@ -1,22 +1,69 @@
+using ppedv.Fuhrparkverwaltung.Model;
+using ppedv.Fuhrparkverwaltung.Model.Contracts;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.Tests
 {
     public class FuhrparkManagerTests
     {
-        [Theory]
-        [InlineData(1949, 73)] // Bobby Farrell, niederländischer Tänzer (Boney M.)
-        [InlineData(1954, 68)] // Helmut Zierl, deutscher Schauspieler
-        [InlineData(1970, 52)]// Corinna May, deutsche Sängerin
-        public void GetAge_06_10_2022(int birthYear, int ageToDay)
+        [Fact]
+        public void GetGarageWithFastestCars_3_garages_number_2_wins()
         {
-            var today = new DateTime(2022, 10, 06);
-            var bdate = new DateTime(birthYear, 10, 06);
-            var service = new FuhrparkManager();
+            IRepository repo = new TestRepo();
+            var fpm = new FuhrparkManager(repo);
 
-            var age = service.GetAge(bdate, today);
+            var result = fpm.GetGarageWithFastestCars();
 
-            Assert.Equal(age, ageToDay);
+            Assert.Equal("G2", result.Ort);
+        }
+    }
+
+    class TestRepo : IRepository
+    {
+        public void Add<T>(T entity) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete<T>(int id) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> GetAll<T>() where T : class
+        {
+            if (typeof(T) == typeof(Garage))
+            {
+                var g1 = new Garage() { Ort = "G1" };
+                g1.Autos.Add(new Auto() { Leistung = 500 });
+
+                var g2 = new Garage() { Ort = "G2" };
+                g2.Autos.Add(new Auto() { Leistung = 300 });
+                g2.Autos.Add(new Auto() { Leistung = 400 });
+
+                var g3 = new Garage() { Ort = "G3" };
+                g3.Autos.Add(new Auto() { Leistung = 200 });
+
+                return new[] { g1, g2, g3 }.Cast<T>();
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public T GetById<T>(int id) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update<T>(T entity) where T : class
+        {
+            throw new NotImplementedException();
         }
     }
 }
