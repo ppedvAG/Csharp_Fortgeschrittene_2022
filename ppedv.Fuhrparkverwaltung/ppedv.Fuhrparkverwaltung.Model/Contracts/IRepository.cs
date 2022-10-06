@@ -1,5 +1,6 @@
 ﻿namespace ppedv.Fuhrparkverwaltung.Model.Contracts
 {
+
     public interface IRepository
     {
         IEnumerable<T> GetAll<T>() where T : class;
