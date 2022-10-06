@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ppedv.Fuhrparkverwaltung.Data.EfCore\ppedv.Fuhrparkverwaltung.Data.EfCore.csproj" />
     <ProjectReference Include="..\ppedv.Fuhrparkverwaltung.Logic.FuhrparkService\ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.csproj" />
     <ProjectReference Include="..\ppedv.Fuhrparkverwaltung.Model\ppedv.Fuhrparkverwaltung.Model.csproj" />
