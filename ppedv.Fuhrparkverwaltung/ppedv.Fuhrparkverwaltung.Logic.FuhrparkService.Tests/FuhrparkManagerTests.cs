@@ -1,7 +1,5 @@
 using ppedv.Fuhrparkverwaltung.Model;
 using ppedv.Fuhrparkverwaltung.Model.Contracts;
-using System.Linq.Expressions;
-using System.Security.Cryptography;
 
 namespace ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.Tests
 {
