@@ -8,6 +8,6 @@
         public string? Farbe { get; set; }
         public int Leistung { get; set; }
         public DateTime Baujahr { get; set; }
-        public Garage? Garage { get; set; }
+        public virtual Garage? Garage { get; set; }
     }
 }
