@@ -22,11 +22,10 @@ var conString = "Server=(localdb)\\mssqllocaldb;Database=Fuhrpark_dev;Trusted_Co
 //DI per AutoFac
 var builder = new ContainerBuilder();
 //builder.RegisterType<EfRepository>().AsImplementedInterfaces();
-builder.Register(x => new EfRepository(conString)).As<IRepository>();
+builder.Register(_ => new EfRepository(conString)).As<IRepository>();
 var container = builder.Build();
 
-
-FuhrparkManager fpm = new FuhrparkManager(container.Resolve<IRepository>());
+FuhrparkManager fpm = new(container.Resolve<IRepository>());
 var repo = container.Resolve<IRepository>();
 foreach (var auto in repo.GetAll<Auto>())
 {

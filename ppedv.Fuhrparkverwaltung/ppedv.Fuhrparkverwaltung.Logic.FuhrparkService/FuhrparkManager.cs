@@ -12,12 +12,11 @@ namespace ppedv.Fuhrparkverwaltung.Logic.FuhrparkService
             Repository = repository;
         }
 
-        public Garage GetGarageWithFastestCars()
+        public Garage? GetGarageWithFastestCars()
         {
             return Repository.GetAll<Garage>()
                              .OrderByDescending(x => x.Autos.Sum(y => y.Leistung))
                              .FirstOrDefault();
         }
-
     }
 }
