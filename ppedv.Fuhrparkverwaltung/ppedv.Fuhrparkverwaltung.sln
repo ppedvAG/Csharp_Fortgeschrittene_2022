@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Fuhrparkverwaltung.Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Fuhrparkverwaltung.Data.EfCore.Tests", "ppedv.Fuhrparkverwaltung.Data.EfCore.Tests\ppedv.Fuhrparkverwaltung.Data.EfCore.Tests.csproj", "{06B62BF5-5077-451E-A82F-61E0A5A99BCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Fuhrparkverwaltung.Logic.FuhrparkService", "ppedv.Fuhrparkverwaltung.Logic.FuhrparkService\ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.csproj", "{4E772B28-CCBB-4B5E-9E5D-FEF0371BEE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.Tests", "ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.Tests\ppedv.Fuhrparkverwaltung.Logic.FuhrparkService.Tests.csproj", "{6EC37FD4-0127-458A-A7CE-0A2A97737151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{06B62BF5-5077-451E-A82F-61E0A5A99BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06B62BF5-5077-451E-A82F-61E0A5A99BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06B62BF5-5077-451E-A82F-61E0A5A99BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E772B28-CCBB-4B5E-9E5D-FEF0371BEE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E772B28-CCBB-4B5E-9E5D-FEF0371BEE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E772B28-CCBB-4B5E-9E5D-FEF0371BEE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E772B28-CCBB-4B5E-9E5D-FEF0371BEE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC37FD4-0127-458A-A7CE-0A2A97737151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC37FD4-0127-458A-A7CE-0A2A97737151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC37FD4-0127-458A-A7CE-0A2A97737151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC37FD4-0127-458A-A7CE-0A2A97737151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
